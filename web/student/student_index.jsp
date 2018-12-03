@@ -27,5 +27,8 @@
 <div>
     <a href="student_select_course.jsp">选课</a>
 </div>
+<div>
+    <a href="/logout.jsp">注销</a>
+</div>
 </body>
 </html>

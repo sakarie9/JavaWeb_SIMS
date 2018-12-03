@@ -20,5 +20,8 @@
 <div>
     <a href="teacher_course.jsp">查看课程</a>
 </div>
+<div>
+    <a href="/logout.jsp">注销</a>
+</div>
 </body>
 </html>
