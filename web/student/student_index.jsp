@@ -17,13 +17,15 @@
 </div>
 <div>
     <a href="student_info.jsp">我的信息</a>
-
 </div>
 <div>
     <a href="student_course.jsp">查看课程</a>
 </div>
 <div>
     <a href="student_score.jsp">查看成绩</a>
+</div>
+<div>
+    <a href="student_select_course.jsp">选课</a>
 </div>
 </body>
 </html>

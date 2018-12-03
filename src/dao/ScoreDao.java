@@ -76,7 +76,7 @@ public class ScoreDao {
     }
 
     //根据学号和课程号修改或录入分数
-    public void setScoreBystuIdAndCourseId(String stuId,String courseId,short score){
+    public void setScoreBystuIdAndCourseId(String stuId,String courseId,float score){
         Connection conn = DBUtil.getConn();
         Statement state = null;
         String sql = "update score set score="+score+

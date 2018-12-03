@@ -13,6 +13,23 @@
 <head>
     <title>Title</title>
 </head>
+
+<script type="text/javascript">
+    function validate(id) {
+        var form = document.forms[id];
+        var score = document.getElementsByName("score")[id];
+        var numPattern = /^(\d|[1-9]\d|100)(\.\d)?$/;
+        //alert(score.value);
+        if (numPattern.test(score.value)){
+            form.action="/servlet/UpdateScoreServlet";
+            form.submit();
+        }else{
+            alert("成绩输入错误！\n请输入0-100的数字，只允许有一位小数！");
+            return false;
+        }
+    }
+</script>
+
 <body>
 <table border="1" align="center" >
     <tr>
@@ -40,7 +57,7 @@
         for(int i=0;i<currentPageList.size();i++){
             ScoreBean score=(ScoreBean)currentPageList.get(i);
     %>
-    <form action="${pageContext.request.contextPath}/servlet/updateScoreServlet" method="post">
+    <form  id="editScoreForm" onsubmit="validate(<%=i%>)">
     <tr>
         <td><%=score.getStuId() %></td>
       <td><%=score.getStuName() %></td>
@@ -53,13 +70,16 @@
             </label>
         </td>
         <td>
-            <input type="submit" value="修改">
+            <input type="submit" value="修改" >
         </td>
     </tr>
     </form>
     <%
         }
     %>
+
+
+
     <tr><td bgcolor="#eeeeee" colspan=4 align="center">
         第<%=currentPage%>页/共<%=pageUtil.getPageCount()%>页
         <a href="teacher_score.jsp?courseId=<%=courseId%>&page=1">首页</a>

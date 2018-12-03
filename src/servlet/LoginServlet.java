@@ -1,6 +1,7 @@
 package servlet;
 import java.io.IOException;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -11,6 +12,7 @@ import dao.LoginDao;
 import dao.StudentDao;
 import dao.TeacherDao;
 
+@WebServlet(name = "LoginServlet",urlPatterns = "/servlet/LoginServlet")
 public class LoginServlet extends HttpServlet {
 //service方法是必须的！在Servlet先执行这个方法
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
