@@ -35,7 +35,7 @@
 <body>
 
 <div>
-    <form method="post" action="/servlet/UploadServlet" enctype="multipart/form-data">
+    <form method="post" action="${pageContext.request.contextPath}/servlet/UploadServlet" enctype="multipart/form-data">
         选择一个文件:
         <input type="file" name="uploadFile" />
         <br>

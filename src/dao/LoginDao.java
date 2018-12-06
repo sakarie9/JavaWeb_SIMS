@@ -48,4 +48,26 @@ public class LoginDao {
         }
         return flag;
     }
+
+    public int login_admin(String username, String password) {
+        Connection conn = DBUtil.getConn();
+        Statement state = null;
+        ResultSet rs = null;
+        int flag = 0;
+        try {
+            String sql = "select adminPsw from admin where adminId = '" + username + "'";
+            //System.out.println(sql);
+            state = conn.createStatement();
+            rs = state.executeQuery(sql);
+            if(rs.next())
+                if(rs.getString("adminPsw").equals(password))
+                    flag=1;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            DBUtil.close(rs, state, conn);
+        }
+        return flag;
+    }
 }

@@ -61,7 +61,7 @@ public class LoginServlet extends HttpServlet {
             System.out.println("登录成功！");
             StudentDao studentDao = new StudentDao();
             StudentBean studentBean = studentDao.getStudentByStuno(username);
-            req.getSession().setAttribute("stuName",studentBean.getName());
+            req.getSession().setAttribute("stuName",studentBean.getStuName());
             req.getSession().setAttribute("stuId",username);
 
             if(!isAutoLogin)

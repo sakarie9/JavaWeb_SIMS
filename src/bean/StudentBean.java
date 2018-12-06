@@ -1,57 +1,57 @@
 package bean;
 
 public class StudentBean {
-    private String username;
-    private String password;
-    private String name;
-    private String email;
-    private String sex;
+    private String stuId;
+    private String stuPsw;
+    private String stuName;
+    private String stuEmail;
+    private String stuSex;
 
     public void setStudent(String username, String password, String name, String email, String sex) {
-        this.username = username;
-        this.password = password;
-        this.name = name;
-        this.email = email;
-        this.sex = sex;
+        this.stuId = username;
+        this.stuPsw = password;
+        this.stuName = name;
+        this.stuEmail = email;
+        this.stuSex = sex;
     }
 
-    public String getName() {
-        return name;
+    public String getStuId() {
+        return stuId;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setStuId(String stuId) {
+        this.stuId = stuId;
     }
 
-    public String getEmail() {
-        return email;
+    public String getStuPsw() {
+        return stuPsw;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setStuPsw(String stuPsw) {
+        this.stuPsw = stuPsw;
     }
 
-    public String getSex() {
-        return sex;
+    public String getStuName() {
+        return stuName;
     }
 
-    public void setSex(String sex) {
-        this.sex = sex;
+    public void setStuName(String stuName) {
+        this.stuName = stuName;
     }
 
-    public String getUsername() {
-        return username;
+    public String getStuEmail() {
+        return stuEmail;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setStuEmail(String stuEmail) {
+        this.stuEmail = stuEmail;
     }
 
-    public String getPassword() {
-        return password;
+    public String getStuSex() {
+        return stuSex;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setStuSex(String stuSex) {
+        this.stuSex = stuSex;
     }
 }
