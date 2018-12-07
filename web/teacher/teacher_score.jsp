@@ -28,9 +28,12 @@
     </div>
 </header>
 
+
 <div class="mdui-text-left mdui-m-l-2">
     <h1 class="mdui-typo">学生成绩</h1>
 </div>
+
+
 <div class="mdui-divider"></div>
 
 <script type="text/javascript">
@@ -53,14 +56,18 @@
     }
 </script>
 
+
+
 <div class="mdui-m-a-5">
     <table border="1" align="center" class="mdui-table mdui-table-hoverable mdui-typo">
         <tr>
-            <td>学号</td>
-            <td>学生名</td>
-            <td>成绩</td>
-            <td>修改成绩</td>
-            <td></td>
+            <th>课程号</th>
+            <th>课程名</th>
+            <th>学号</th>
+            <th>学生名</th>
+            <th>成绩</th>
+            <th>修改成绩</th>
+            <th></th>
         </tr>
         <%
             ScoreDao sd = new ScoreDao();
@@ -68,6 +75,7 @@
             if (teaId == null) response.sendRedirect("/login.jsp");
             String courseId = request.getParameter("courseId");
             List list = sd.getScoreBycourseId(courseId);
+            String courseName = ((ScoreBean)list.get(0)).getCourseName();
 
             String pageStr = request.getParameter("page");
             int currentPage = 1;
@@ -81,24 +89,38 @@
             for (int i = 0; i < currentPageList.size(); i++) {
                 ScoreBean score = (ScoreBean) currentPageList.get(i);
         %>
-        <form id="editScoreForm" onsubmit="return validate(<%=i%>)" action="${pageContext.request.contextPath}/servlet/UpdateScoreServlet" method="post">
+
+        <script>
+            function printPDF() {
+                <%
+                session.setAttribute("scoreList",list);
+                %>
+                return true;
+            }
+        </script>
+
+        <form id="editScoreForm" onsubmit="return validate(<%=i%>)"
+              action="${pageContext.request.contextPath}/servlet/UpdateScoreServlet" method="post">
             <tr>
+                <td><%=score.getCourseId()%></td>
+                <td><%=score.getCourseName()%></td>
                 <td><%=score.getStuId() %>
                 </td>
                   
                 <td><%=score.getStuName() %>
                 </td>
                   
-                <td><%=score.getScore()==-1 ? "无成绩" : score.getScore()%>
+                <td><%=score.getScore() == -1 ? "无成绩" : score.getScore()%>
                 </td>
                 <td>
                     <input value="<%=score.getStuId() %>" name="stuId" type="hidden">
                     <input value="<%=courseId %>" name="courseId" type="hidden">
                     <%--<label>--%>
-                        <%--<input name="score" size="4">--%>
+                    <%--<input name="score" size="4">--%>
                     <%--</label>--%>
                     <div class="mdui-textfield mdui-m-a-0 mdui-p-a-0">
-                        <input class="mdui-textfield-input mdui-m-a-0 mdui-p-a-0" name="score" type="text" placeholder="输入分数" required/>
+                        <input class="mdui-textfield-input mdui-m-a-0 mdui-p-a-0" name="score" type="text"
+                               placeholder="输入分数" required/>
                     </div>
                 </td>
                 <td>
@@ -113,7 +135,7 @@
 
 
         <tr>
-            <td bgcolor="#eeeeee" colspan=5 align="center">
+            <td bgcolor="#eeeeee" colspan=7 align="center">
                 第<%=currentPage%>页/共<%=pageUtil.getPageCount()%>页
                 <a href="teacher_score.jsp?courseId=<%=courseId%>&page=1">首页</a>
                 <a href="teacher_score.jsp?courseId=<%=courseId%>&page=<%=(pageUtil.getPrePage())%>">上页</a>
@@ -122,6 +144,22 @@
             </td>
         </tr>
     </table>
+
+
+    <div class="mdui-float-right mdui-m-t-2">
+        <div class="mdui-float-right">
+        <form action="${pageContext.request.contextPath}/servlet/PrintPDFServlet" method="post" onsubmit="return printPDF()">
+            <button class="mdui-btn mdui-color-theme-accent mdui-ripple mdui-btn-raised" type="submit">打印为PDF</button>
+        </form>
+        </div>
+        <div class="mdui-float-right mdui-m-r-2">
+        <form>
+            <button class="mdui-btn mdui-color-theme-accent mdui-ripple mdui-btn-raised" type="submit">打印为Excel</button>
+        </form>
+        </div>
+
+    </div>
+
 </div>
 
 
@@ -147,3 +185,4 @@
 
 </body>
 </html>
+
