@@ -38,7 +38,7 @@
     <div class="mdui-toolbar mdui-color-theme">
         <span mdui-drawer="{target: '#drawer', swipe: true}"
               class="mdui-btn mdui-btn-icon mdui-ripple mdui-ripple-white"><i class="mdui-icon material-icons">menu</i></span>
-        <span class="mdui-typo-title">Title</span>
+        <span class="mdui-typo-title">学生信息管理系统</span>
         <div class="mdui-toolbar-spacer"></div>
 
         <a href="javascript:;" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">more_vert</i></a>

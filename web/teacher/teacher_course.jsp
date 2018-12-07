@@ -11,10 +11,31 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>课程查看</title>
+    <title>查看课程</title>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/mdui.css">
+    <script src="${pageContext.request.contextPath}/js/mdui.js"></script>
 </head>
-<body>
-<table border="1" align="center">
+
+
+<body class="mdui-appbar-with-toolbar mdui-theme-primary-indigo mdui-theme-accent-pink mdui-loaded mdui-drawer-body-left">
+<header class="mdui-appbar mdui-appbar-fixed">
+    <div class="mdui-toolbar mdui-color-theme">
+        <span mdui-drawer="{target: '#drawer', swipe: true}"
+              class="mdui-btn mdui-btn-icon mdui-ripple mdui-ripple-white"><i class="mdui-icon material-icons">menu</i></span>
+        <span class="mdui-typo-title">学生信息管理系统</span>
+        <div class="mdui-toolbar-spacer"></div>
+
+        <a href="javascript:;" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">more_vert</i></a>
+    </div>
+</header>
+
+<div class="mdui-text-left mdui-m-l-2">
+    <h1 class="mdui-typo">我的课程</h1>
+</div>
+<div class="mdui-divider"></div>
+
+<div class="mdui-m-a-5">
+    <table border="1" align="center" class="mdui-table mdui-table-hoverable mdui-typo">
     <tr>
         <td>课程编号</td>
         <td>课程名</td>
@@ -48,12 +69,38 @@
         }
     %>
     <tr><td width=100% bgcolor="#eeeeee" colspan=4 align="center">
+        <div>
         第<%=currentPage%>页/共<%=pageUtil.getPageCount()%>页
         <a href="teacher_course.jsp?page=1">首页</a>
         <a href="teacher_course.jsp?page=<%=(pageUtil.getPrePage())%>">上页</a>
         <a href="teacher_course.jsp?page=<%=(pageUtil.getNextPage())%>">下页</a>
         <a href="teacher_course.jsp?page=<%=pageUtil.getPageCount()%>">末页</a>
+        </div>
     </td></tr>
-</table>
+    </table>
+</div>
+
+
+
+<div class="mdui-drawer" id="drawer">
+    <ul class="mdui-list">
+        <li class="mdui-list-item mdui-ripple">
+            <i class="mdui-list-item-icon mdui-icon material-icons">account_circle</i>
+            <a href="teacher_index.jsp" class="mdui-list-item-content">我的主页</a>
+        </li>
+        <li class="mdui-list-item mdui-ripple">
+            <i class="mdui-list-item-icon mdui-icon material-icons">book</i>
+            <a href="teacher_course.jsp" class="mdui-list-item-content">查看课程</a>
+        </li>
+    </ul>
+    <div class="mdui-divider"></div>
+    <ul class="mdui-list">
+        <li class="mdui-list-item mdui-ripple">
+            <i class="mdui-list-item-icon mdui-icon material-icons">clear</i>
+            <a href="${pageContext.request.contextPath}/logout.jsp" class="mdui-list-item-content">注销</a>
+        </li>
+    </ul>
+</div>
+
 </body>
 </html>
