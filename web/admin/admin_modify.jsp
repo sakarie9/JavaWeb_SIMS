@@ -1,5 +1,6 @@
+<%@ page import="bean.StudentBean" %>
 <%@ page import="dao.StudentDao" %>
-<%@ page import="bean.StudentBean" %><%--
+<%--
   Created by IntelliJ IDEA.
   User: sk308
   Date: 2018/12/5/005
@@ -13,10 +14,12 @@
 </head>
 <body>
 <%
-        StudentDao sd = new StudentDao();
-        String stuId = request.getParameter("stuId");
-        StudentBean student = sd.getStudentByStuno(stuId);
-        request.getSession().setAttribute("originStudent",student);
+    StudentDao sd = new StudentDao();
+    String stuId = request.getParameter("stuId");
+    StudentBean student = sd.getStudentByStuno(stuId);
+    request.getSession().setAttribute("originStudent",student);
+
+    System.out.println(stuId);
 %>
 <form action="${pageContext.request.contextPath}/servlet/ModifyStudentServlet" method="post">
 <table border="1" align="center">

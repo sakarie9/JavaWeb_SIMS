@@ -1,7 +1,7 @@
+<%@ page import="bean.ScoreBean" %>
 <%@ page import="dao.ScoreDao" %>
-<%@ page import="java.util.List" %>
 <%@ page import="util.PageUtil" %>
-<%@ page import="bean.ScoreBean" %><%--
+<%@ page import="java.util.List" %><%--
   Created by IntelliJ IDEA.
   User: sk308
   Date: 2018/11/28/028
@@ -15,6 +15,7 @@
 </head>
 
 <script type="text/javascript">
+
     function validate(id) {
         var form = document.forms[id];
         var score = document.getElementsByName("score")[id];
@@ -54,30 +55,29 @@
 
         List currentPageList = pageUtil.getCurrentList(list);
 
-        for(int i=0;i<currentPageList.size();i++){
+        for(int i=0; i<currentPageList.size(); i++){
             ScoreBean score=(ScoreBean)currentPageList.get(i);
     %>
-    <form  id="editScoreForm" onsubmit="validate(<%=i%>)">
-    <tr>
-        <td><%=score.getStuId() %></td>
-      <td><%=score.getStuName() %></td>
-      <td><%=score.getScore() %></td>
-        <td>
-            <input value="<%=score.getStuId() %>" name="stuId" type="hidden">
-            <input value="<%=courseId %>" name="courseId" type="hidden">
-            <label>
-                <input name="score" size="4">
-            </label>
-        </td>
-        <td>
-            <input type="submit" value="修改" >
-        </td>
-    </tr>
+    <form id="editScoreForm" onsubmit="validate(<%=i%>)">
+        <tr>
+            <td><%=score.getStuId() %></td>
+              <td><%=score.getStuName() %></td>
+              <td><%=score.getScore() %></td>
+            <td>
+                <input value="<%=score.getStuId() %>" name="stuId" type="hidden">
+                <input value="<%=courseId %>" name="courseId" type="hidden">
+                <label>
+                    <input name="score" size="4">
+                </label>
+            </td>
+            <td>
+                <input type="submit" value="修改" >
+            </td>
+        </tr>
     </form>
     <%
         }
     %>
-
 
 
     <tr><td bgcolor="#eeeeee" colspan=4 align="center">

@@ -5,7 +5,6 @@ import util.DBUtil;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
@@ -78,10 +77,12 @@ public class CourseDao {
         ResultSet rs = null;
         try{
             String sql = "select distinct course.*,teacher.teaName " +
-                    "from course,teacher,score " +
+                    "from course,teacher " +
                     "where course.courseId " +
                     "not in (select distinct course.courseId from course,teacher,score where course.teaId=teacher.teaId and score.stuId='"+stuId+"' and score.courseId=course.courseId) " +
                     "and course.teaId=teacher.teaId";
+            //System.out.println(stuId);
+            //System.out.println(sql);
             state = conn.createStatement();
             rs = state.executeQuery(sql);
             while (rs.next()) {

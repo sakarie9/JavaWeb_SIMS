@@ -27,9 +27,11 @@
     // 定时跳转
     response.setHeader("refresh", "2; URL = /login.jsp");
 %>
+<div class="mdui-typo mdui-text-center">
+    <h3>您已成功退出本系统，两秒钟后跳转到登陆页</h3>
+    <h3>如果没有自动跳转，请点击<a href="login.jsp">这里</a></h3>
+</div>
 
-<h3>您已成功退出本系统，两秒钟后跳转到登陆页</h3>
-<h3>如果没有自动跳转，请点击<a href="login.jsp">这里</a></h3>
 
 </body>
 </html>

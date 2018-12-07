@@ -1,26 +1,24 @@
 package servlet;
 
-import java.io.File;
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.List;
+import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload.disk.DiskFileItemFactory;
+import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.File;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.List;
 
-import org.apache.commons.fileupload.FileItem;
-import org.apache.commons.fileupload.disk.DiskFileItemFactory;
-import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 
-/**
- * Servlet implementation class UploadServlet
- */
 @WebServlet(name = "UploadServlet",urlPatterns = "/servlet/UploadServlet")
 public class UploadServlet extends HttpServlet {
+
     private static final long serialVersionUID = 1L;
 
     // 上传文件存储目录
@@ -36,6 +34,7 @@ public class UploadServlet extends HttpServlet {
      */
     protected void doPost(HttpServletRequest request,
                           HttpServletResponse response) throws ServletException, IOException {
+        System.out.println("test");
         // 检测是否为多媒体上传
         if (!ServletFileUpload.isMultipartContent(request)) {
             // 如果不是则停止
@@ -108,6 +107,7 @@ public class UploadServlet extends HttpServlet {
             request.setAttribute("message", "错误信息: " + ex.getMessage());
         }
         // 跳转到 avatarsMessage.jsp
-        getServletContext().getRequestDispatcher("/avatarsMessage.jsp").forward(request, response);
+        //getServletContext().getRequestDispatcher("/student/student_index.jsp").forward(request, response);
+        response.sendRedirect("/student/student_index.jsp");
     }
 }

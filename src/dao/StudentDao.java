@@ -1,6 +1,5 @@
 package dao;
 
-import bean.ScoreBean;
 import bean.StudentBean;
 import util.DBUtil;
 
@@ -44,7 +43,8 @@ public class StudentDao {
                 "set stuName='"+student.getStuName()+"'," +
                 "stuSex='"+student.getStuSex()+"',"+
                 "stuEmail='"+student.getStuEmail()+"',"+
-                "stuPsw='"+student.getStuPsw()+"'";
+                "stuPsw='" + student.getStuPsw() + "'" +
+                " where stuId='" + student.getStuId() + "'";
         //System.out.println(sql);
         try{
             state = conn.createStatement();
@@ -77,7 +77,7 @@ public class StudentDao {
         Connection conn = DBUtil.getConn();
         Statement state = null;
         String sql = "delete from student where stuId='"+stuId+"'";
-        //System.out.println(sql);
+        System.out.println(sql);
         try{
             state = conn.createStatement();
             state.executeUpdate(sql);

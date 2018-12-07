@@ -1,7 +1,7 @@
+<%@ page import="bean.StudentBean" %>
 <%@ page import="dao.StudentDao" %>
-<%@ page import="java.util.List" %>
 <%@ page import="util.PageUtil" %>
-<%@ page import="bean.StudentBean" %><%--
+<%@ page import="java.util.List" %><%--
   Created by IntelliJ IDEA.
   User: sk308
   Date: 2018/12/5/005
@@ -13,8 +13,27 @@
 <head>
     <title>学生信息</title>
 </head>
+
+<script type="text/javascript">
+    var buttonClicked;
+
+    function jump(id) {
+        var form = document.forms[id];
+        var stuId = form.getAttributeNode("stuId");
+        if (buttonClicked === 1) {
+            form.action = "admin_modify.jsp?stuId=" + stuId;
+            form.submit();
+        } else {
+            form.action = "/servlet/DeleteStudentServlet?stuId=" + stuId;
+            form.submit();
+        }
+    }
+
+</script>
+
+
 <body>
-<form action="${pageContext.request.contextPath}/servlet/DeleteStudentServlet" method="post">
+
 <table border="1" align="center">
     <tr>
         <td>学号</td>
@@ -37,17 +56,25 @@
 
         List currentPageList = pageUtil.getCurrentList(list);
 
-        for(int i=0;i<currentPageList.size();i++){
+        for(int i = 0; i<currentPageList.size(); i++){
             StudentBean student=(StudentBean)currentPageList.get(i);
     %>
-    <tr>
-      <td><%=student.getStuId() %><input value=<%=student.getStuId()%> name="stuId" type="hidden"></td>
-      <td><%=student.getStuName() %></td>
-      <td><%=student.getStuSex() %></td>
-        <td><%=student.getStuEmail() %></td>
-        <td><button onclick="location.href='admin_modify.jsp?stuId=<%=student.getStuId()%>'">修改</button></td>
-        <td><button type="submit">删除</button></td>
-    </tr>
+    <form id="form" onsubmit="jump(<%=i%>)">
+        <tr>
+              <td><%=student.getStuId() %><input value=<%=student.getStuId()%> name="stuId" type="hidden"></td>
+              <td><%=student.getStuName() %></td>
+              <td><%=student.getStuSex() %></td>
+            <td><%=student.getStuEmail() %></td>
+            <%--<td><button onclick="location.href='admin_modify.jsp?stuId=<%=student.getStuId()%>'">修改</button></td>--%>
+            <%--<td><button onclick="location.href='admin_delete.jsp?stuId=<%=student.getStuId()%>'">删除</button></td>--%>
+            <td>
+                <button onclick="buttonClicked=1">修改</button>
+            </td>
+            <td>
+                <button onclick="buttonClicked=2">删除</button>
+            </td>
+        </tr>
+    </form>
     <%
         }
     %>
@@ -59,7 +86,7 @@
         <a href="admin_select_student.jsp?page=<%=pageUtil.getPageCount()%>">末页</a>
     </td></tr>
 </table>
-</form>
+
 <div align="center">
     <a href="admin_insert.jsp">新增学生</a>
 </div>
