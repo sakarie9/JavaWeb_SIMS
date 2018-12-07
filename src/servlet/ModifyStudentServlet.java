@@ -14,24 +14,27 @@ import java.util.Map;
 @WebServlet(name = "ModifyStudentServlet",urlPatterns = "/servlet/ModifyStudentServlet")
 public class ModifyStudentServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
         StudentBean student = (StudentBean) request.getSession().getAttribute("originStudent");
-        if(student==null)
-            return;
+        //System.out.println(student.getStuEmail());
+//        if(student==null)
+//            return;
         String stuName,stuSex,stuEmail,stuPsw;
         stuName = request.getParameter("stuName");
         stuSex = request.getParameter("stuSex");
         stuEmail = request.getParameter("stuEmail");
+        //System.out.println(stuEmail);
         stuPsw = request.getParameter("stuPsw");
-        if(stuName!=null){
+        if(!stuName.equals("")){
             student.setStuName(stuName);
         }
         if(stuSex!=null){
             student.setStuSex(stuSex);
         }
-        if(stuEmail!=null){
+        if(!stuEmail.equals("")){
             student.setStuEmail(stuEmail);
         }
-        if(stuPsw!=null){
+        if(!stuPsw.equals("")){
             student.setStuPsw(stuPsw);
         }
 

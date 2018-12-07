@@ -92,7 +92,7 @@ public class UploadServlet extends HttpServlet {
                         String filePath = uploadPath + File.separator + fileName;
                         File storeFile = new File(filePath);
                         // 在控制台输出文件的上传路径
-                        System.out.println(filePath);
+                        //System.out.println(filePath);
                         if(storeFile.exists()){
                             storeFile.delete();
                         }

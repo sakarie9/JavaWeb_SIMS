@@ -14,21 +14,14 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>学生信息管理系统</title>
-    <link rel="stylesheet" href="css/mdui.css">
-    <script src="js/mdui.js"></script>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/mdui.css">
+    <script src="${pageContext.request.contextPath}/js/mdui.js"></script>
 
     <script type="text/javascript">
         //刷新验证码
         function changeImg() {
             document.getElementById("validateCodeImg").src = "servlet/DrawValidateCodeServlet?t=" + Math.random();
         }
-
-        // //侧栏
-        // var inst = new ;
-        // document.getElementById('toggle').addEventListener('click', function () {
-        //     inst.toggle();
-        // });
-
     </script>
 </head>
 
@@ -45,78 +38,6 @@
     </div>
 </header>
 
-<%--<div class="mdui-container mdui-center mdui-row-6 mdui-card-content">--%>
-<%--<form action="${pageContext.request.contextPath}/servlet/LoginServlet" method="post">--%>
-
-<%--<div class="mdui-typo mdui-center mdui-col">--%>
-<%--<h1>学生信息管理系统</h1>--%>
-<%--</div>--%>
-
-<%--<div class="mdui-divider"></div>--%>
-<%--<div class="mdui-card-content">--%>
-<%--<div class="mdui-textfield mdui-textfield-floating-label mdui-col">--%>
-<%--<label class="mdui-textfield-label">用户名</label>--%>
-<%--<input type="text" class="mdui-textfield-input" name="username" required/>--%>
-<%--<div class="mdui-textfield-error">用户名不能为空</div>--%>
-<%--</div>--%>
-<%--<div class="mdui-textfield mdui-textfield-floating-label mdui-col">--%>
-<%--<label class="mdui-textfield-label">密码</label>--%>
-<%--&lt;%&ndash;pattern="^.*(?=.{6,})(?=.*[a-z])(?=.*[A-Z]).*$"&ndash;%&gt;--%>
-<%--<input type="password" class="mdui-textfield-input" name="password" required/>--%>
-<%--<div class="mdui-textfield-error">密码至少 6 位，且包含大小写字母</div>--%>
-<%--<div class="mdui-textfield-helper">请输入至少 6 位，且包含大小写字母的密码</div>--%>
-<%--</div>--%>
-<%--<div class="mdui-row-md-2 mdui-col ">--%>
-<%--&lt;%&ndash;<input type="radio" name="role" value="student" checked="checked">学生&ndash;%&gt;--%>
-<%--<div class="mdui-col">--%>
-<%--<label class="mdui-radio">--%>
-<%--<input type="radio" name="role" value="student" checked/>--%>
-<%--<i class="mdui-radio-icon"></i>--%>
-<%--学生--%>
-<%--</label>--%>
-<%--</div>--%>
-<%--&lt;%&ndash;<input type="radio" name="role" value="teacher">教师&ndash;%&gt;--%>
-<%--<div class="mdui-col">--%>
-<%--<label class="mdui-radio">--%>
-<%--<input type="radio" name="role" value="teacher"/>--%>
-<%--<i class="mdui-radio-icon"></i>--%>
-<%--教师--%>
-<%--</label>--%>
-<%--</div>--%>
-<%--</div>--%>
-<%--<div class="mdui-col ">--%>
-<%--&lt;%&ndash;<input type="checkbox" name="autoLogin" value="autoLogin">两周内自动登录&ndash;%&gt;--%>
-<%--<label class="mdui-checkbox">--%>
-<%--<input type="checkbox" name="autoLogin" value="autoLogin"/>--%>
-<%--<i class="mdui-checkbox-icon"></i>--%>
-<%--两周内自动登录--%>
-<%--</label>--%>
-<%--</div>--%>
-<%--<div class="mdui-col ">--%>
-<%--<div class="mdui-row-xs-2">--%>
-<%--<div class="mdui-col mdui-textfield mdui-textfield-floating-label ">--%>
-<%--<label class="mdui-textfield-label">验证码</label>--%>
-<%--<input class="mdui-textfield-input" type="text" name="validateCode"/>--%>
-<%--</div>--%>
-<%--<div class="mdui-col">--%>
-<%--<img class="mdui-img-rounded" alt="看不清？换一张" src="servlet/DrawValidateCodeServlet"--%>
-<%--id="validateCodeImg" onclick="changeImg()">--%>
-<%--</div>--%>
-<%--</div>--%>
-<%--</div>--%>
-<%--<div>--%>
-<%--<button class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-theme-accent mdui-btn-block "--%>
-<%--type="submit">登录--%>
-<%--</button>--%>
-<%--</div>--%>
-<%--</div>--%>
-<%--</form>--%>
-
-<%--&lt;%&ndash;<div class="mdui-drawer" id="drawer">&ndash;%&gt;--%>
-<%--&lt;%&ndash;... drawer content ...&ndash;%&gt;--%>
-<%--&lt;%&ndash;</div>&ndash;%&gt;--%>
-
-<%--</div>--%>
 <form action="${pageContext.request.contextPath}/servlet/LoginServlet" method="post">
     <div class="mdui-container">
         <div class="mdui-m-a-2"></div>

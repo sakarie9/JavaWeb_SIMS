@@ -12,6 +12,8 @@
 <html>
 <head>
     <title>学生信息</title>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/mdui.css">
+    <script src="${pageContext.request.contextPath}/js/mdui.js"></script>
 </head>
 
 <script type="text/javascript">
@@ -20,28 +22,71 @@
     function jump(id) {
         var form = document.forms[id];
         var stuId = form.getAttributeNode("stuId");
+        var state=0;
         if (buttonClicked === 1) {
             form.action = "admin_modify.jsp?stuId=" + stuId;
-            form.submit();
+            state=1;
         } else {
             form.action = "/servlet/DeleteStudentServlet?stuId=" + stuId;
-            form.submit();
+            form.method = "get";
+            // mdui.confirm('content', function(){
+            //     state=1;
+            //     //form.submit();
+            // });
+            if(confirm("确定删除？")){
+                state=1;
+            }
+            // form.action = "/servlet/DeleteStudentServlet?stuId=" + stuId;
+            // form.submit();
         }
+        return state === 1;
     }
 
 </script>
 
 
-<body>
+<div class="mdui-drawer" id="drawer">
+    <ul class="mdui-list">
+        <li class="mdui-list-item mdui-ripple">
+            <i class="mdui-list-item-icon mdui-icon material-icons">account_circle</i>
+            <a href="admin_select_student.jsp" class="mdui-list-item-content">学生信息</a>
+        </li>
+    </ul>
+    <div class="mdui-divider"></div>
+    <ul class="mdui-list">
+        <li class="mdui-list-item mdui-ripple">
+            <i class="mdui-list-item-icon mdui-icon material-icons">cancel</i>
+            <a href="${pageContext.request.contextPath}/logout.jsp" class="mdui-list-item-content">注销</a>
+        </li>
+    </ul>
+</div>
 
-<table border="1" align="center">
+<body class="mdui-appbar-with-toolbar mdui-theme-primary-indigo mdui-theme-accent-pink mdui-loaded mdui-drawer-body-left">
+<header class="mdui-appbar mdui-appbar-fixed">
+    <div class="mdui-toolbar mdui-color-theme">
+        <span mdui-drawer="{target: '#drawer', swipe: true}"
+              class="mdui-btn mdui-btn-icon mdui-ripple mdui-ripple-white"><i class="mdui-icon material-icons">menu</i></span>
+        <span class="mdui-typo-title">学生信息管理系统</span>
+        <div class="mdui-toolbar-spacer"></div>
+
+        <a href="javascript:;" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">more_vert</i></a>
+    </div>
+</header>
+
+<div class="mdui-text-left mdui-m-l-2">
+    <h1 class="mdui-typo">学生信息</h1>
+</div>
+<div class="mdui-divider"></div>
+
+<div class="mdui-m-a-5">
+    <table border="1" align="center" class="mdui-table mdui-table-hoverable mdui-typo">
     <tr>
-        <td>学号</td>
-        <td>姓名</td>
-        <td>性别</td>
-        <td>电子邮箱</td>
-        <td>修改</td>
-        <td>删除</td>
+        <th>学号</th>
+        <th>姓名</th>
+        <th>性别</th>
+        <th>电子邮箱</th>
+        <th>修改</th>
+        <th>删除</th>
     </tr>
     <%
         StudentDao sd=new StudentDao();
@@ -59,36 +104,40 @@
         for(int i = 0; i<currentPageList.size(); i++){
             StudentBean student=(StudentBean)currentPageList.get(i);
     %>
-    <form id="form" onsubmit="jump(<%=i%>)">
+    <form id="form" onsubmit="return jump(<%=i%>)" action="">
         <tr>
               <td><%=student.getStuId() %><input value=<%=student.getStuId()%> name="stuId" type="hidden"></td>
               <td><%=student.getStuName() %></td>
               <td><%=student.getStuSex() %></td>
             <td><%=student.getStuEmail() %></td>
-            <%--<td><button onclick="location.href='admin_modify.jsp?stuId=<%=student.getStuId()%>'">修改</button></td>--%>
-            <%--<td><button onclick="location.href='admin_delete.jsp?stuId=<%=student.getStuId()%>'">删除</button></td>--%>
+
             <td>
-                <button onclick="buttonClicked=1">修改</button>
+                <button onclick="buttonClicked=1" class="mdui-btn mdui-color-theme-accent mdui-ripple">修改</button>
             </td>
             <td>
-                <button onclick="buttonClicked=2">删除</button>
+                <button onclick="buttonClicked=2" class="mdui-btn mdui-color-theme-accent mdui-ripple">删除</button>
             </td>
         </tr>
     </form>
     <%
         }
     %>
-    <tr><td bgcolor="#eeeeee" colspan=6 align="center">
+    <tr><td bgcolor="#eeeeee" colspan=6>
+        <div>
         第<%=currentPage%>页/共<%=pageUtil.getPageCount()%>页
         <a href="admin_select_student.jsp?page=1">首页</a>
         <a href="admin_select_student.jsp?page=<%=(pageUtil.getPrePage())%>">上页</a>
         <a href="admin_select_student.jsp?page=<%=(pageUtil.getNextPage())%>">下页</a>
         <a href="admin_select_student.jsp?page=<%=pageUtil.getPageCount()%>">末页</a>
+        </div>
     </td></tr>
 </table>
-
-<div align="center">
-    <a href="admin_insert.jsp">新增学生</a>
+    <div class="mdui-float-right mdui-icon-right mdui-m-a-2">
+        <button class="mdui-btn mdui-color-theme-accent mdui-ripple" onclick="location.href='admin_insert.jsp'">新增学生</button>
+    </div>
 </div>
+
+
+
 </body>
 </html>

@@ -25,40 +25,20 @@
             return path.substring(pos + 1);
     }
 
-    //mdui.JQ('#dialog').on('click', function(){
     function fileUpload() {
         var fileName;
         //fileName = document.getElementById("dialog").value;
         fileName = document.getElementById("dialog").value;
         fileName = getFileName(fileName);
-        //document.forms[0].submit();
-        mdui.dialog({
-            title: '上传头像',
-            content: '你确定要上传 ' + fileName + ' 吗？',
-            destroyOnClosed: 'false',
-            buttons: [
-                {
-                    text: '取消'
-                },
-                {
-                    text: '确认',
-                    onClick: function (inst) {
-                        //mdui.alert('点击确认按钮的回调');
-                        document.forms[0].submit();
-                        //document.getElementById("upload")[0].submit();
-                    }
-                }
-            ]
-        });
 
+        if(confirm("确定上传"+fileName+"吗？")){
+            document.forms[0].submit();
+        }
     }
 
-    //});
 </script>
 
 <%
-
-
     String fileName = request.getSession().getAttribute("stuId").toString();
     String avatarDir = "/avatars/" + fileName;
     //System.out.println(avatarDir);
@@ -123,26 +103,26 @@
 <div class="mdui-drawer" id="drawer">
     <ul class="mdui-list">
         <li class="mdui-list-item mdui-ripple">
-            <i class="mdui-list-item-icon mdui-icon material-icons">move_to_inbox</i>
+            <i class="mdui-list-item-icon mdui-icon material-icons">account_circle</i>
             <a href="student_index.jsp" class="mdui-list-item-content">我的信息</a>
         </li>
         <li class="mdui-list-item mdui-ripple">
-            <i class="mdui-list-item-icon mdui-icon material-icons">send</i>
+            <i class="mdui-list-item-icon mdui-icon material-icons">local_library</i>
             <a href="student_course.jsp" class="mdui-list-item-content">查看课程</a>
         </li>
-        <li class="mdui-list-item mdui-ripple">
-            <i class="mdui-list-item-icon"></i>
+        <li class="mdui-list-item mdui-ripple ">
+            <i class="mdui-list-item-icon mdui-icon material-icons">book</i>
             <a href="student_score.jsp" class="mdui-list-item-content">查看成绩</a>
         </li>
         <li class="mdui-list-item mdui-ripple">
-            <i class="mdui-list-item-icon"></i>
+            <i class="mdui-list-item-icon mdui-icon material-icons">library_add</i>
             <a href="student_select_course.jsp" class="mdui-list-item-content">选课</a>
         </li>
     </ul>
     <div class="mdui-divider"></div>
     <ul class="mdui-list">
         <li class="mdui-list-item mdui-ripple">
-            <i class="mdui-list-item-icon mdui-icon material-icons">clear</i>
+            <i class="mdui-list-item-icon mdui-icon material-icons">cancel</i>
             <a href="${pageContext.request.contextPath}/logout.jsp" class="mdui-list-item-content">注销</a>
         </li>
     </ul>

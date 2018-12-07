@@ -37,12 +37,12 @@
     <div class="mdui-m-a-5">
         <table border="1" align="center" class="mdui-table mdui-table-hoverable mdui-typo">
             <tr>
-                <td>课程编号</td>
-                <td>课程名</td>
-                <td>教工号</td>
-                <td>教师</td>
-                <td>学分</td>
-                <td>选课</td>
+                <th>课程编号</th>
+                <th>课程名</th>
+                <th>教工号</th>
+                <th>教师</th>
+                <th>学分</th>
+                <th>选课</th>
             </tr>
             <%
                 CourseDao cd = new CourseDao();
@@ -91,26 +91,26 @@
 <div class="mdui-drawer" id="drawer">
     <ul class="mdui-list">
         <li class="mdui-list-item mdui-ripple">
-            <i class="mdui-list-item-icon mdui-icon material-icons">move_to_inbox</i>
+            <i class="mdui-list-item-icon mdui-icon material-icons">account_circle</i>
             <a href="student_index.jsp" class="mdui-list-item-content">我的信息</a>
         </li>
         <li class="mdui-list-item mdui-ripple">
-            <i class="mdui-list-item-icon mdui-icon material-icons">send</i>
+            <i class="mdui-list-item-icon mdui-icon material-icons">local_library</i>
             <a href="student_course.jsp" class="mdui-list-item-content">查看课程</a>
         </li>
-        <li class="mdui-list-item mdui-ripple">
-            <i class="mdui-list-item-icon"></i>
+        <li class="mdui-list-item mdui-ripple ">
+            <i class="mdui-list-item-icon mdui-icon material-icons">book</i>
             <a href="student_score.jsp" class="mdui-list-item-content">查看成绩</a>
         </li>
         <li class="mdui-list-item mdui-ripple">
-            <i class="mdui-list-item-icon"></i>
+            <i class="mdui-list-item-icon mdui-icon material-icons">library_add</i>
             <a href="student_select_course.jsp" class="mdui-list-item-content">选课</a>
         </li>
     </ul>
     <div class="mdui-divider"></div>
     <ul class="mdui-list">
         <li class="mdui-list-item mdui-ripple">
-            <i class="mdui-list-item-icon mdui-icon material-icons">clear</i>
+            <i class="mdui-list-item-icon mdui-icon material-icons">cancel</i>
             <a href="${pageContext.request.contextPath}/logout.jsp" class="mdui-list-item-content">注销</a>
         </li>
     </ul>

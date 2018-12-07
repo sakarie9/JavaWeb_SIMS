@@ -56,9 +56,13 @@ public class StudentDao {
         }
     }
 
-    public void insertStudent(StudentBean student){
+    public boolean insertStudent(StudentBean student){
+        boolean isDone=false;
         Connection conn = DBUtil.getConn();
         Statement state = null;
+        if(student.getStuPsw().equals("")){
+            student.setStuPsw("111111");
+        }
         String sql = "insert into student" +
                 "(stuId,stuName,stuSex,stuEmail,stuPsw)" +
                 "values ('"+student.getStuId()+"','"+student.getStuName()+"','"+student.getStuSex()+"','"+student.getStuEmail()+"','"+student.getStuPsw()+"')";
@@ -66,11 +70,14 @@ public class StudentDao {
         try{
             state = conn.createStatement();
             state.executeUpdate(sql);
+            isDone=true;
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
             DBUtil.close(state, conn);
         }
+        //System.out.println(isDone);
+        return isDone;
     }
 
     public void deleteStudent(String stuId){

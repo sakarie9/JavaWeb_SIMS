@@ -9,6 +9,8 @@
 <html>
 <head>
     <title>注销</title>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/mdui.css">
+    <script src="${pageContext.request.contextPath}/js/mdui.js"></script>
 </head>
 <body>
 <%
