@@ -78,7 +78,7 @@
                 ScoreBean score = (ScoreBean) list.get(i);
         %>
                 
-        <tr>
+        <tr id="<%=i%>">
                         
             <td><%=score.getCourseId() %>
             </td>
@@ -88,7 +88,13 @@
                         
             <td><%=score.getCredit() %>
             </td>
-                        
+            <script>
+                var score = "<%=score.getScore()%>";
+                score = parseFloat(score);
+                if(score<60){
+                    document.getElementById("<%=i%>").classList.add("mdui-color-red-a400");
+                }
+            </script>         
             <td><%=score.getScore() %>
             </td>
 

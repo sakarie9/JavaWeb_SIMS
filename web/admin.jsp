@@ -61,7 +61,7 @@
                         <div class="mdui-row-xs-2">
                             <div class="mdui-col mdui-textfield mdui-textfield-floating-label ">
                                 <label class="mdui-textfield-label">验证码</label>
-                                <input class="mdui-textfield-input" type="text" name="validateCode"/>
+                                <input class="mdui-textfield-input" type="text" name="validateCode" required/>
                             </div>
                             <div class="mdui-col">
                                 <img class="mdui-img-fluid mdui-m-t-5" alt="看不清？换一张"

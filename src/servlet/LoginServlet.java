@@ -44,7 +44,12 @@ public class LoginServlet extends HttpServlet {
             password = req.getParameter("password");//获取用户名密码
             role = req.getParameter("role");
         }
-        validateCodeAuth(req, resp);
+
+        if(!validateCodeAuth(req, resp)){
+            return;
+        }
+
+
         if("student".equals(role)){
             login_student(req,resp,username,password,false);
         }
@@ -121,7 +126,7 @@ public class LoginServlet extends HttpServlet {
         }
     }
 
-    private void validateCodeAuth(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+    private boolean validateCodeAuth(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         HttpSession session = req.getSession();
         //获取验证码
         String validateCode = req.getParameter("validateCode").trim();
@@ -129,10 +134,12 @@ public class LoginServlet extends HttpServlet {
         //将输入的验证码中的小写字母转换成大写，再和验证码生成时保存在session中的字符串比较
         if(checkcode != null && checkcode.equals(convertToCapitalString(validateCode))){
             session.removeAttribute("checkcode");
+            return true;
         }
         else{
+            req.getSession().setAttribute("checkcodeErr","验证码输入错误！");
             resp.sendRedirect("/login.jsp");
-            return;
+            return false;
         }
     }
 
