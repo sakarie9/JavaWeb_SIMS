@@ -24,6 +24,7 @@ public class SelectCourseServlet extends HttpServlet {
                 }
             }
         } catch (Exception e) {
+            e.printStackTrace();
             response.sendRedirect("/student/student_select_course.jsp");
             return;
         }

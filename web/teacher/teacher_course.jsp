@@ -34,7 +34,7 @@
 </div>
 <div class="mdui-divider"></div>
 
-<div class="mdui-m-a-5">
+<div class="mdui-container">
     <table border="1" align="center" class="mdui-table mdui-table-hoverable mdui-typo">
     <tr>
         <td>课程编号</td>

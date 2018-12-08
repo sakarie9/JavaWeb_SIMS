@@ -29,7 +29,7 @@
 </header>
 
 <div class="mdui-text-left mdui-m-l-2">
-    <h1 class="mdui-typo">我的成绩</h1>
+    <h1 class="mdui-typo">选课</h1>
 </div>
 <div class="mdui-divider"></div>
 
@@ -73,7 +73,7 @@
                 <td>
                     <input value="<%=course.getCourseId() %>" name="courseId" type="hidden">
                     <label class="mdui-checkbox">
-                        <input type="checkbox" name="selectCourse"/>
+                        <input type="checkbox" name="selectCourse" value="1"/>
                         <i class="mdui-checkbox-icon"></i>
                     </label>
                 </td>

@@ -107,7 +107,7 @@ public class CourseDao {
         Connection conn = DBUtil.getConn();
         Statement state = null;
         String sql ="insert into score (courseId,stuId) values ('"+courseId+"','"+stuId+"')";
-        //System.out.println(sql);
+        System.out.println(sql);
         try{
             state = conn.createStatement();
             state.executeUpdate(sql);

@@ -1,7 +1,8 @@
 <%@ page import="bean.ScoreBean" %>
 <%@ page import="dao.ScoreDao" %>
 <%@ page import="util.PageUtil" %>
-<%@ page import="java.util.List" %><%--
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.ArrayList" %><%--
   Created by IntelliJ IDEA.
   User: sk308
   Date: 2018/11/28/028
@@ -58,7 +59,29 @@
 
 
 
-<div class="mdui-m-a-5">
+<div class="mdui-container">
+
+    <div class="mdui-m-t-2">
+        <div class="mdui-float-left">
+            <button class="mdui-textfield-icon mdui-btn mdui-btn-icon" id="searchBtn"><i class="mdui-icon material-icons">search</i></button>
+        </div>
+        <div class="mdui-float-right">
+            <form action="${pageContext.request.contextPath}/servlet/PrintPDFServlet" method="post"
+                  onsubmit="return printPDF()">
+                <button class="mdui-btn mdui-color-theme-accent mdui-ripple mdui-btn-raised" type="submit">打印为PDF
+                </button>
+            </form>
+        </div>
+        <div class="mdui-float-right mdui-m-r-2">
+            <form>
+                <button class="mdui-btn mdui-color-theme-accent mdui-ripple mdui-btn-raised" type="submit">打印为Excel
+                </button>
+            </form>
+        </div>
+    </div>
+
+
+
     <table border="1" align="center" class="mdui-table mdui-table-hoverable mdui-typo">
         <tr>
             <th>课程号</th>
@@ -70,12 +93,27 @@
             <th></th>
         </tr>
         <%
+
+
+
             ScoreDao sd = new ScoreDao();
             String teaId = session.getAttribute("teaId").toString();
             if (teaId == null) response.sendRedirect("/login.jsp");
             String courseId = request.getParameter("courseId");
             List list = sd.getScoreBycourseId(courseId);
-            String courseName = ((ScoreBean)list.get(0)).getCourseName();
+
+            String searchStuId = request.getParameter("searchStuId");//搜索学生
+            if(searchStuId!=null){
+                for (int i = 0; i < list.size(); i++) {
+                    ScoreBean scoreSearch = (ScoreBean) list.get(i);
+                    if(scoreSearch.getStuId().equals(searchStuId)){
+                        List<ScoreBean> listSearch = new ArrayList<>();
+                        listSearch.add(scoreSearch);
+                        list = listSearch;
+                        break;
+                    }
+                }
+            }
 
             String pageStr = request.getParameter("page");
             int currentPage = 1;
@@ -102,8 +140,10 @@
         <form id="editScoreForm" onsubmit="return validate(<%=i%>)"
               action="${pageContext.request.contextPath}/servlet/UpdateScoreServlet" method="post">
             <tr>
-                <td><%=score.getCourseId()%></td>
-                <td><%=score.getCourseName()%></td>
+                <td><%=score.getCourseId()%>
+                </td>
+                <td><%=score.getCourseName()%>
+                </td>
                 <td><%=score.getStuId() %>
                 </td>
                   
@@ -135,30 +175,45 @@
 
 
         <tr>
-            <td bgcolor="#eeeeee" colspan=7 align="center">
-                第<%=currentPage%>页/共<%=pageUtil.getPageCount()%>页
-                <a href="teacher_score.jsp?courseId=<%=courseId%>&page=1">首页</a>
-                <a href="teacher_score.jsp?courseId=<%=courseId%>&page=<%=(pageUtil.getPrePage())%>">上页</a>
-                <a href="teacher_score.jsp?courseId=<%=courseId%>&page=<%=(pageUtil.getNextPage())%>">下页</a>
-                <a href="teacher_score.jsp?courseId=<%=courseId%>&page=<%=pageUtil.getPageCount()%>">末页</a>
+            <td bgcolor="#eeeeee" colspan=7>
+                <div>
+                    第<%=currentPage%>页/共<%=pageUtil.getPageCount()%>页
+                    <a href="teacher_score.jsp?courseId=<%=courseId%>&page=1">首页</a>
+                    <a href="teacher_score.jsp?courseId=<%=courseId%>&page=<%=(pageUtil.getPrePage())%>">上页</a>
+                    <a href="teacher_score.jsp?courseId=<%=courseId%>&page=<%=(pageUtil.getNextPage())%>">下页</a>
+                    <a href="teacher_score.jsp?courseId=<%=courseId%>&page=<%=pageUtil.getPageCount()%>">末页</a>
+                </div>
             </td>
         </tr>
+
     </table>
 
+    <%--<div class="mdui-panel mdui-panel-gapless mdui-m-t-2" mdui-panel>--%>
+        <%--<div class="mdui-panel-item">--%>
+            <%--<div class="mdui-panel-item-header">搜索</div>--%>
+            <%--<div class="mdui-panel-item-body">--%>
+                <%--<div class="mdui-textfield">--%>
+                    <%--<label class="mdui-textfield-label">学号</label>--%>
+                    <%--<input class="mdui-textfield-input" type="text" id="search"/>--%>
+                <%--</div>--%>
+                <%--<div>--%>
+                    <%--<button class="mdui-btn mdui-color-theme-accent mdui-ripple mdui-btn-raised">搜索</button>--%>
+                <%--</div>--%>
 
-    <div class="mdui-float-right mdui-m-t-2">
-        <div class="mdui-float-right">
-        <form action="${pageContext.request.contextPath}/servlet/PrintPDFServlet" method="post" onsubmit="return printPDF()">
-            <button class="mdui-btn mdui-color-theme-accent mdui-ripple mdui-btn-raised" type="submit">打印为PDF</button>
-        </form>
-        </div>
-        <div class="mdui-float-right mdui-m-r-2">
-        <form>
-            <button class="mdui-btn mdui-color-theme-accent mdui-ripple mdui-btn-raised" type="submit">打印为Excel</button>
-        </form>
-        </div>
-
-    </div>
+                <%--<table border="1" align="center" class="mdui-table mdui-table-hoverable mdui-typo mdui-m-t-2">--%>
+                    <%--<tr>--%>
+                        <%--<th>课程号</th>--%>
+                        <%--<th>课程名</th>--%>
+                        <%--<th>学号</th>--%>
+                        <%--<th>学生名</th>--%>
+                        <%--<th>成绩</th>--%>
+                        <%--<th>修改成绩</th>--%>
+                        <%--<th></th>--%>
+                    <%--</tr>--%>
+                <%--</table>--%>
+            <%--</div>--%>
+        <%--</div>--%>
+    <%--</div>--%>
 
 </div>
 
@@ -186,3 +241,13 @@
 </body>
 </html>
 
+<script>
+    mdui.JQ('#searchBtn').on('click', function () {
+        mdui.prompt('请输入要搜索的学生学号',
+            function (value) {
+                mdui.alert('你输入了：' + value + '，点击了确认按钮');
+                location.href="teacher_score.jsp?courseId=<%=courseId%>&searchStuId="+value;
+            }
+        );
+    });
+</script>
