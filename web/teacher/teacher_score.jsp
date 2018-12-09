@@ -67,13 +67,14 @@
         </div>
         <div class="mdui-float-right">
             <form action="${pageContext.request.contextPath}/servlet/PrintPDFServlet" method="post"
-                  onsubmit="return printPDF()">
+                  onsubmit="return print()">
                 <button class="mdui-btn mdui-color-theme-accent mdui-ripple mdui-btn-raised" type="submit">打印为PDF
                 </button>
             </form>
         </div>
         <div class="mdui-float-right mdui-m-r-2">
-            <form>
+            <form action="${pageContext.request.contextPath}/servlet/PrintExcelServlet" method="post"
+                  onsubmit="return print()">
                 <button class="mdui-btn mdui-color-theme-accent mdui-ripple mdui-btn-raised" type="submit">打印为Excel
                 </button>
             </form>
@@ -129,7 +130,7 @@
         %>
 
         <script>
-            function printPDF() {
+            function print() {
                 <%
                 session.setAttribute("scoreList",list);
                 %>
@@ -185,36 +186,7 @@
                 </div>
             </td>
         </tr>
-
     </table>
-
-    <%--<div class="mdui-panel mdui-panel-gapless mdui-m-t-2" mdui-panel>--%>
-        <%--<div class="mdui-panel-item">--%>
-            <%--<div class="mdui-panel-item-header">搜索</div>--%>
-            <%--<div class="mdui-panel-item-body">--%>
-                <%--<div class="mdui-textfield">--%>
-                    <%--<label class="mdui-textfield-label">学号</label>--%>
-                    <%--<input class="mdui-textfield-input" type="text" id="search"/>--%>
-                <%--</div>--%>
-                <%--<div>--%>
-                    <%--<button class="mdui-btn mdui-color-theme-accent mdui-ripple mdui-btn-raised">搜索</button>--%>
-                <%--</div>--%>
-
-                <%--<table border="1" align="center" class="mdui-table mdui-table-hoverable mdui-typo mdui-m-t-2">--%>
-                    <%--<tr>--%>
-                        <%--<th>课程号</th>--%>
-                        <%--<th>课程名</th>--%>
-                        <%--<th>学号</th>--%>
-                        <%--<th>学生名</th>--%>
-                        <%--<th>成绩</th>--%>
-                        <%--<th>修改成绩</th>--%>
-                        <%--<th></th>--%>
-                    <%--</tr>--%>
-                <%--</table>--%>
-            <%--</div>--%>
-        <%--</div>--%>
-    <%--</div>--%>
-
 </div>
 
 

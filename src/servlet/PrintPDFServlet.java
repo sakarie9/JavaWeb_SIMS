@@ -37,8 +37,6 @@ public class PrintPDFServlet extends HttpServlet {
             Font font = new Font(baseFont);
             // 添加表格，5列
             PdfPTable table = new PdfPTable(6);
-//            document.add(new Paragraph("Hello World"));
-//            document.add(new Paragraph("冯乃我发你哦奥委会覅哦啊"));
             // 构建每个单元格
             PdfPCell cell1 = new PdfPCell(new Paragraph("课程号",font));
             table.addCell(cell1);
