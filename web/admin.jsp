@@ -83,48 +83,25 @@
     </div>
 </form>
 
-
-<%--<form action="${pageContext.request.contextPath}/servlet/AdminLoginServlet" method="post">--%>
-<%--<div>--%>
-    <%--<input type="text" placeholder="管理员账号" name="username"/>--%>
-<%--</div>--%>
-<%--<div>--%>
-    <%--<input type="password" placeholder="密码" name="password"/>--%>
-<%--</div>--%>
-<%--<div>--%>
-    <%--<input type="text" name="validateCode" style="width:50px" placeholder="验证码">--%>
-    <%--<img alt="看不清？换一张" src="servlet/DrawValidateCodeServlet" id="" onclick="changeImg()">--%>
-<%--</div>--%>
-<%--<div>--%>
-    <%--<input type="submit" value="登录"/>--%>
-<%--</div>--%>
-<%--</form>--%>
 </body>
 </html>
-<%--<%--%>
-    <%--String  err = (String) request.getSession().getAttribute("checkcodeErr");--%>
-    <%--if(err!=null){--%>
-        <%--System.out.println(err);--%>
-<%--%>--%>
-<%--<script>--%>
-    <%--mdui.alert('<%=err%>', function(){--%>
-        <%--//mdui.alert('点击了确认按钮');--%>
-        <%--${sessionScope.remove("checkcodeErr")}--%>
-        <%--location.href='/admin.jsp';--%>
-        <%--mdui.close();--%>
-    <%--});--%>
-<%--</script>--%>
-<%--<%--%>
-        <%--request.getSession().removeAttribute("checkcodeErr");--%>
-        <%--//response.sendRedirect("/admin.jsp");--%>
-    <%--}--%>
-<%--%>--%>
 
 <script>
     var err = "${sessionScope.checkcodeErr}";
     if(err!==""){
         mdui.alert(err, function(){
             ${sessionScope.remove("checkcodeErr")}
+            location.href='/admin.jsp';
+            mdui.close();
+        });
+    }
+</script>
+
+<script>
+    var loginErr = "${sessionScope.loginErr}";
+    if(loginErr!==""){
+        mdui.alert(loginErr, function(){
+            ${sessionScope.remove("loginErr")}
             location.href='/admin.jsp';
             mdui.close();
         });

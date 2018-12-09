@@ -65,33 +65,54 @@
 </div>
 
 
-<%
-    Object emailError = request.getSession().getAttribute("emailError");
-    if (emailError != null) {
-        System.out.println(emailError);
-%>
-<script>
-    mdui.alert("<%=emailError%>");
-</script>
-<%
-        request.getSession().removeAttribute("emailError");
-    }
-%>
-<%
-    Object resetOk = request.getSession().getAttribute("resetOk");
-    if (resetOk != null) {
-        System.out.println(resetOk);
-%>
-<script>
-    mdui.alert("<%=resetOk%>");
-</script>
-<%
-        request.getSession().removeAttribute("resetOk");
-        response.sendRedirect("/logout.jsp");
-        return;
-    }
-%>
+<%--<%--%>
+    <%--Object emailError = request.getSession().getAttribute("emailError");--%>
+    <%--if (emailError != null) {--%>
+        <%--System.out.println(emailError);--%>
+<%--%>--%>
+<%--<script>--%>
+    <%--mdui.alert("<%=emailError%>");--%>
+<%--</script>--%>
+<%--<%--%>
+        <%--request.getSession().removeAttribute("emailError");--%>
+    <%--}--%>
+<%--%>--%>
+<%--<%--%>
+    <%--Object resetOk = request.getSession().getAttribute("resetOk");--%>
+    <%--if (resetOk != null) {--%>
+        <%--System.out.println(resetOk);--%>
+<%--%>--%>
+<%--<script>--%>
+    <%--mdui.alert("<%=resetOk%>");--%>
+<%--</script>--%>
+<%--<%--%>
+        <%--request.getSession().removeAttribute("resetOk");--%>
+        <%--response.sendRedirect("/logout.jsp");--%>
+        <%--return;--%>
+    <%--}--%>
+<%--%>--%>
 
 
 </body>
 </html>
+
+<script>
+    var emailError = "${sessionScope.emailError}";
+    if(emailError!==""){
+        mdui.alert(emailError, function(){
+            ${sessionScope.remove("emailError")}
+            location.href='/login.jsp';
+            mdui.close();
+        });
+    }
+</script>
+<script>
+    var resetOk = "${sessionScope.resetOk}";
+    if(resetOk!==""){
+        mdui.alert(resetOk, function(){
+            ${sessionScope.remove("resetOk")}
+            location.href='/logout.jsp';
+            mdui.close();
+        });
+    }
+</script>

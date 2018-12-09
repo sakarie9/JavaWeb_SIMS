@@ -75,6 +75,7 @@ public class LoginServlet extends HttpServlet {
             resp.sendRedirect(req.getContextPath() + "/student/student_index.jsp");//登录成功跳转到主界面
         } else {
             System.out.println("登录失败！");
+            req.getSession().setAttribute("loginErr","登陆失败！请检查用户名和密码！");
             resp.sendRedirect(req.getContextPath() + "/login.jsp");
         }
     }

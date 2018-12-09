@@ -13,13 +13,14 @@ public class TeacherAccessFilter implements Filter {
     }
 
     public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain) throws ServletException, IOException {
-        chain.doFilter(req, resp);
         HttpServletRequest servletRequest = (HttpServletRequest) req;
         HttpServletResponse servletResponse = (HttpServletResponse) resp;
         HttpSession session = servletRequest.getSession();
         if(session.getAttribute("teaId")==null){
             servletResponse.sendRedirect("/login.jsp");
+            return;
         }
+        chain.doFilter(req, resp);
     }
 
     public void init(FilterConfig config) throws ServletException {

@@ -58,7 +58,7 @@ public class SendEmailServlet extends HttpServlet {
                 e.printStackTrace();
             }
         } else {
-            request.getSession().setAttribute("emailError", "重置失败请重试");
+            request.getSession().setAttribute("emailError", "输入的邮箱错误");
             response.sendRedirect("/reset_psw.jsp");
         }
     }

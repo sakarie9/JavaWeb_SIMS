@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="org.apache.poi:poi:4.0.1" type="repository">
+    <properties maven-id="org.apache.poi:poi:4.0.1" />
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/web/WEB-INF/lib/poi-4.0.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/web/WEB-INF/lib/commons-codec-1.11.jar!/" />
+      <root url="jar://$PROJECT_DIR$/web/WEB-INF/lib/commons-collections4-4.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/web/WEB-INF/lib/commons-math3-3.6.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

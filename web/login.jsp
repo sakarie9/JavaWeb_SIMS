@@ -104,6 +104,9 @@
                                     type="submit">登录
                             </button>
                         </div>
+                        <div class="mdui-m-a-2 mdui-typo mdui-text-center">
+                            <a href="reset_psw.jsp" >忘记密码？</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -121,6 +124,17 @@
     if(err!==""){
         mdui.alert(err, function(){
             ${sessionScope.remove("checkcodeErr")}
+            location.href='/login.jsp';
+            mdui.close();
+        });
+    }
+</script>
+
+<script>
+    var loginErr = "${sessionScope.loginErr}";
+    if(loginErr!==""){
+        mdui.alert(loginErr, function(){
+            ${sessionScope.remove("loginErr")}
             location.href='/login.jsp';
             mdui.close();
         });
