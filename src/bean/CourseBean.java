@@ -7,6 +7,14 @@ public class CourseBean {
     private String teaId;
     private String teaName;
 
+    public void setCourse(String courseId, String courseName, String teaId, String teaName, float credit) {
+        this.courseId = courseId;
+        this.courseName = courseName;
+        this.teaId = teaId;
+        this.teaName = teaName;
+        this.credit = credit;
+    }
+
     public String getCourseName() {
         return courseName;
     }

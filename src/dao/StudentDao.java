@@ -84,7 +84,7 @@ public class StudentDao {
         Connection conn = DBUtil.getConn();
         Statement state = null;
         String sql = "delete from student where stuId='"+stuId+"'";
-        System.out.println(sql);
+        //System.out.println(sql);
         try{
             state = conn.createStatement();
             state.executeUpdate(sql);

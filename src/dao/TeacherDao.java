@@ -113,7 +113,7 @@ public class TeacherDao {
         Connection conn = DBUtil.getConn();
         Statement state = null;
         String sql = "delete from teacher where teaId='"+teaId+"'";
-        System.out.println(sql);
+        //System.out.println(sql);
         try{
             state = conn.createStatement();
             state.executeUpdate(sql);

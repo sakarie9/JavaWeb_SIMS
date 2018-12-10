@@ -2,16 +2,18 @@
   Created by IntelliJ IDEA.
   User: sk308
   Date: 2018/12/10/010
-  Time: 11:37
+  Time: 12:15
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>新增教师</title>
+    <title>新增课程</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/mdui.css">
     <script src="${pageContext.request.contextPath}/js/mdui.js"></script>
 </head>
+
+
 
 <div class="mdui-drawer" id="drawer">
     <ul class="mdui-list">
@@ -54,49 +56,34 @@
 </header>
 
 <div class="mdui-text-left mdui-m-l-2">
-    <h1 class="mdui-typo">新增教师</h1>
+    <h1 class="mdui-typo">新增课程</h1>
 </div>
 <div class="mdui-divider"></div>
 
-<form action="${pageContext.request.contextPath}/servlet/TeacherInsertServlet" method="post">
+<form action="${pageContext.request.contextPath}/servlet/CourseInsertServlet" method="post">
     <div class="mdui-typo mdui-m-a-2 mdui-container mdui-center">
         <div class="mdui-row">
             <div class="mdui-col-xs-6">
                 <div class="mdui-textfield mdui-textfield-floating-label">
+                    <label class="mdui-textfield-label">课程号</label>
+                    <input class="mdui-textfield-input" type="text" name="courseId" required/>
+                    <div class="mdui-textfield-error">课程号不能为空</div>
+                </div>
+                <div class="mdui-textfield mdui-textfield-floating-label">
+                    <label class="mdui-textfield-label">课程名</label>
+                    <input class="mdui-textfield-input" type="text" name="courseName" required/>
+                    <div class="mdui-textfield-error">课程名不能为空</div>
+                </div>
+                <div class="mdui-textfield mdui-textfield-floating-label">
+                    <label class="mdui-textfield-label">学分</label>
+                    <input class="mdui-textfield-input" type="text" name="credit" required/>
+                    <div class="mdui-textfield-error">学分不能为空</div>
+                </div>
+                <div class="mdui-textfield mdui-textfield-floating-label">
                     <label class="mdui-textfield-label">教师号</label>
                     <input class="mdui-textfield-input" type="text" name="teaId" required/>
-                    <div class="mdui-textfield-error">用户名不能为空</div>
                 </div>
-                <div class="mdui-textfield mdui-textfield-floating-label">
-                    <label class="mdui-textfield-label">教师姓名</label>
-                    <input class="mdui-textfield-input" type="text" name="teaName" required/>
-                    <div class="mdui-textfield-error">姓名不能为空</div>
-                </div>
-                <div class="mdui-row-xs-2">
-                    <div class="mdui-col">
-                        <label class="mdui-radio">
-                            <input type="radio" name="teaSex" value="男" checked/>
-                            <i class="mdui-radio-icon"></i>
-                            男
-                        </label>
-                    </div>
-                    <div class="mdui-col">
-                        <label class="mdui-radio">
-                            <input type="radio" name="teaSex" value="女"/>
-                            <i class="mdui-radio-icon"></i>
-                            女
-                        </label>
-                    </div>
-                </div>
-                <div class="mdui-textfield mdui-textfield-floating-label">
-                    <label class="mdui-textfield-label">职称</label>
-                    <input class="mdui-textfield-input" type="text" name="title" required/>
-                </div>
-                <div class="mdui-textfield mdui-textfield-floating-label">
-                    <label class="mdui-textfield-label">密码</label>
-                    <input class="mdui-textfield-input" type="text" name="teaPsw"/>
-                    <div class="mdui-textfield-helper">输入密码，留空则密码默认为111111</div>
-                </div>
+
                 <button class="mdui-btn mdui-color-theme-accent mdui-ripple" type="submit">提交</button>
             </div>
         </div>
@@ -111,7 +98,7 @@
     if(err!==""){
         mdui.alert(err, function(){
             ${sessionScope.remove("insertErr")}
-            location.href='teacher_insert.jsp';
+            location.href='course_insert.jsp';
             mdui.close();
         });
     }
@@ -122,7 +109,7 @@
     if(ok!==""){
         mdui.alert(ok, function(){
             ${sessionScope.remove("insertOk")}
-            location.href='teacher_insert.jsp';
+            location.href='course_insert.jsp';
             mdui.close();
         });
     }
