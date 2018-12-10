@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "InsertStudentServlet",urlPatterns = "/servlet/InsertStudentServlet")
-public class InsertStudentServlet extends HttpServlet {
+@WebServlet(name = "StudentInsertServlet",urlPatterns = "/servlet/StudentInsertServlet")
+public class StudentInsertServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
         StudentDao sd = new StudentDao();

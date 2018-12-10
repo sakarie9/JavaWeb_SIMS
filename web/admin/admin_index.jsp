@@ -17,7 +17,19 @@
     <ul class="mdui-list">
         <li class="mdui-list-item mdui-ripple">
             <i class="mdui-list-item-icon mdui-icon material-icons">account_circle</i>
-            <a href="admin_select_student.jsp" class="mdui-list-item-content">学生信息</a>
+            <a href="student_select.jsp" class="mdui-list-item-content">学生信息</a>
+        </li>
+    </ul>
+    <ul class="mdui-list">
+        <li class="mdui-list-item mdui-ripple">
+            <i class="mdui-list-item-icon mdui-icon material-icons">person</i>
+            <a href="teacher_select.jsp" class="mdui-list-item-content">教师信息</a>
+        </li>
+    </ul>
+    <ul class="mdui-list">
+        <li class="mdui-list-item mdui-ripple">
+            <i class="mdui-list-item-icon mdui-icon material-icons">book</i>
+            <a href="course_select.jsp" class="mdui-list-item-content">课程信息</a>
         </li>
     </ul>
     <div class="mdui-divider"></div>

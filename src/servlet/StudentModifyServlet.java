@@ -11,8 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Map;
 
-@WebServlet(name = "ModifyStudentServlet",urlPatterns = "/servlet/ModifyStudentServlet")
-public class ModifyStudentServlet extends HttpServlet {
+@WebServlet(name = "StudentModifyServlet",urlPatterns = "/servlet/StudentModifyServlet")
+public class StudentModifyServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
         StudentBean student = (StudentBean) request.getSession().getAttribute("originStudent");

@@ -24,24 +24,18 @@
         var stuId = form.getAttributeNode("stuId");
         var state=0;
         if (buttonClicked === 1) {
-            form.action = "admin_modify.jsp?stuId=" + stuId;
+            form.action = "student_modify.jsp?stuId=" + stuId;
             state=1;
         } else {
-            form.action = "/servlet/DeleteStudentServlet?stuId=" + stuId;
+            form.action = "/servlet/StudentDeleteServlet?stuId=" + stuId;
             form.method = "get";
-            // mdui.confirm('content', function(){
-            //     state=1;
-            //     //form.submit();
-            // });
+
             if(confirm("确定删除？")){
                 state=1;
             }
-            // form.action = "/servlet/DeleteStudentServlet?stuId=" + stuId;
-            // form.submit();
         }
         return state === 1;
     }
-
 </script>
 
 
@@ -49,7 +43,19 @@
     <ul class="mdui-list">
         <li class="mdui-list-item mdui-ripple">
             <i class="mdui-list-item-icon mdui-icon material-icons">account_circle</i>
-            <a href="admin_select_student.jsp" class="mdui-list-item-content">学生信息</a>
+            <a href="student_select.jsp" class="mdui-list-item-content">学生信息</a>
+        </li>
+    </ul>
+    <ul class="mdui-list">
+        <li class="mdui-list-item mdui-ripple">
+            <i class="mdui-list-item-icon mdui-icon material-icons">person</i>
+            <a href="teacher_select.jsp" class="mdui-list-item-content">教师信息</a>
+        </li>
+    </ul>
+    <ul class="mdui-list">
+        <li class="mdui-list-item mdui-ripple">
+            <i class="mdui-list-item-icon mdui-icon material-icons">book</i>
+            <a href="course_select.jsp" class="mdui-list-item-content">课程信息</a>
         </li>
     </ul>
     <div class="mdui-divider"></div>
@@ -78,7 +84,7 @@
 </div>
 <div class="mdui-divider"></div>
 
-<div class="mdui-m-a-5">
+<div class="mdui-container">
     <table border="1" align="center" class="mdui-table mdui-table-hoverable mdui-typo">
     <tr>
         <th>学号</th>
@@ -125,15 +131,15 @@
     <tr><td bgcolor="#eeeeee" colspan=6>
         <div>
         第<%=currentPage%>页/共<%=pageUtil.getPageCount()%>页
-        <a href="admin_select_student.jsp?page=1">首页</a>
-        <a href="admin_select_student.jsp?page=<%=(pageUtil.getPrePage())%>">上页</a>
-        <a href="admin_select_student.jsp?page=<%=(pageUtil.getNextPage())%>">下页</a>
-        <a href="admin_select_student.jsp?page=<%=pageUtil.getPageCount()%>">末页</a>
+        <a href="student_select.jsp?page=1">首页</a>
+        <a href="student_select.jsp?page=<%=(pageUtil.getPrePage())%>">上页</a>
+        <a href="student_select.jsp?page=<%=(pageUtil.getNextPage())%>">下页</a>
+        <a href="student_select.jsp?page=<%=pageUtil.getPageCount()%>">末页</a>
         </div>
     </td></tr>
 </table>
     <div class="mdui-float-right mdui-icon-right mdui-m-a-2">
-        <button class="mdui-btn mdui-color-theme-accent mdui-ripple" onclick="location.href='admin_insert.jsp'">新增学生</button>
+        <button class="mdui-btn mdui-color-theme-accent mdui-ripple" onclick="location.href='student_insert.jsp'">新增学生</button>
     </div>
 </div>
 

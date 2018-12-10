@@ -17,7 +17,19 @@
     <ul class="mdui-list">
         <li class="mdui-list-item mdui-ripple">
             <i class="mdui-list-item-icon mdui-icon material-icons">account_circle</i>
-            <a href="admin_select_student.jsp" class="mdui-list-item-content">学生信息</a>
+            <a href="student_select.jsp" class="mdui-list-item-content">学生信息</a>
+        </li>
+    </ul>
+    <ul class="mdui-list">
+        <li class="mdui-list-item mdui-ripple">
+            <i class="mdui-list-item-icon mdui-icon material-icons">person</i>
+            <a href="teacher_select.jsp" class="mdui-list-item-content">教师信息</a>
+        </li>
+    </ul>
+    <ul class="mdui-list">
+        <li class="mdui-list-item mdui-ripple">
+            <i class="mdui-list-item-icon mdui-icon material-icons">book</i>
+            <a href="course_select.jsp" class="mdui-list-item-content">课程信息</a>
         </li>
     </ul>
     <div class="mdui-divider"></div>
@@ -47,7 +59,7 @@
 <div class="mdui-divider"></div>
 
 
-<form action="${pageContext.request.contextPath}/servlet/InsertStudentServlet" method="post">
+<form action="${pageContext.request.contextPath}/servlet/StudentInsertServlet" method="post">
     <div class="mdui-typo mdui-m-a-2 mdui-container mdui-center">
         <div class="mdui-row">
             <div class="mdui-col-xs-6">
@@ -107,7 +119,7 @@
     if(err!==""){
         mdui.alert(err, function(){
             ${sessionScope.remove("insertErr")}
-            location.href='/admin/admin_insert.jsp';
+            location.href='student_insert.jsp';
             mdui.close();
         });
     }
@@ -118,7 +130,7 @@
     if(ok!==""){
         mdui.alert(ok, function(){
             ${sessionScope.remove("insertOk")}
-            location.href='/admin/admin_insert.jsp';
+            location.href='student_insert.jsp';
             mdui.close();
         });
     }

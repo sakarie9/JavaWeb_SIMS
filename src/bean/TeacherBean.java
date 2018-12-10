@@ -7,11 +7,12 @@ public class TeacherBean {
     private String title;
     private String teaSex;
 
-    public void setTeacher(String teaId, String teaName, String title, String teaSex) {
+    public void setTeacher(String teaId, String teaName, String title, String teaSex,String teaPsw) {
         this.teaId = teaId;
         this.teaName = teaName;
         this.title = title;
         this.teaSex = teaSex;
+        this.teaPsw = teaPsw;
     }
 
 
