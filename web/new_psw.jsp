@@ -41,7 +41,7 @@
                 <div class="mdui-divider"></div>
 
                 <div class="mdui-card-content">
-                    <form action="${pageContext.request.contextPath}/servlet/SendEmailServlet" method="get"
+                    <form action="${pageContext.request.contextPath}/servlet/ResetPswServlet" method="get"
                           name="form1">
                         <div class="mdui-textfield mdui-textfield-floating-label mdui-col">
                             <label class="mdui-textfield-label">邮箱验证码</label>

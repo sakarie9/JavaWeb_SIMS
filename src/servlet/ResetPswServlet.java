@@ -21,8 +21,8 @@ import static util.Constants.myEmailAccount;
 import static util.Constants.myEmailPassword;
 
 
-@WebServlet(name = "SendEmailServlet",urlPatterns = "/servlet/SendEmailServlet")
-public class SendEmailServlet extends HttpServlet {
+@WebServlet(name = "ResetPswServlet",urlPatterns = "/servlet/ResetPswServlet")
+public class ResetPswServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String inputEmailCode = req.getParameter("inputEmailCode");

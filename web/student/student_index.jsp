@@ -1,4 +1,6 @@
-<%@ page import="java.io.File" %><%--
+<%@ page import="java.io.File" %>
+<%@ page import="bean.StudentBean" %>
+<%@ page import="dao.StudentDao" %><%--
   Created by IntelliJ IDEA.
   User: sk308
   Date: 2018/11/18/018
@@ -48,10 +50,14 @@
 
     File file = new File(realPath);
     if (!file.exists() || file.length() == 0) {
-        fileName = "default";
+        fileName = "default.png";
         avatarDir = "/res/" + fileName;
         //System.out.println(avatarDir);
     }
+
+    StudentDao sd = new StudentDao();
+    StudentBean student = sd.getStudentByStuno(fileName);
+
 %>
 
 <body class="mdui-appbar-with-toolbar mdui-theme-primary-indigo mdui-theme-accent-pink mdui-loaded mdui-drawer-body-left">
@@ -77,9 +83,9 @@
                 </div>
                 <div class="mdui-card-primary">
                     <div class="mdui-card-primary-title">${ sessionScope.stuName }</div>
-                    <div class="mdui-card-primary-subtitle">${ sessionScope.stuId }</div>
+                    <div class="mdui-card-primary-subtitle">${ sessionScope.stuId }<br><%=student.getStuEmail()%></div>
                 </div>
-                <div class="mdui-card-content">子曰：「学而时习之，不亦说乎？有朋自远方来，不亦乐乎？人不知，而不愠，不亦君子乎？」</div>
+                <div class="mdui-card-content">笃信仁厚，慎思勤勉。</div>
                 <div class="mdui-card-actions">
                     <div>
                         <form method="post" action="${pageContext.request.contextPath}/servlet/UploadServlet"

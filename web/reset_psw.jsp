@@ -42,7 +42,7 @@
                 <div class="mdui-divider"></div>
 
                 <div class="mdui-card-content">
-                    <form action="${pageContext.request.contextPath}/servlet/SendEmailServlet" method="post">
+                    <form action="${pageContext.request.contextPath}/servlet/ResetPswServlet" method="post">
                         <div class="mdui-textfield mdui-textfield-floating-label">
                             <label class="mdui-textfield-label">学号</label>
                             <input class="mdui-textfield-input" type="text" name="stuId"/>
