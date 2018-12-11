@@ -56,7 +56,7 @@
     }
 
     StudentDao sd = new StudentDao();
-    StudentBean student = sd.getStudentByStuno(fileName);
+    StudentBean student = sd.getStudentBystuId(fileName);
 
 %>
 

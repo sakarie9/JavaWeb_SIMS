@@ -65,7 +65,7 @@ public class LoginServlet extends HttpServlet {
         if (flag == 1) {
             System.out.println("登录成功！");
             StudentDao studentDao = new StudentDao();
-            StudentBean studentBean = studentDao.getStudentByStuno(username);
+            StudentBean studentBean = studentDao.getStudentBystuId(username);
             req.getSession().setAttribute("stuName",studentBean.getStuName());
             req.getSession().setAttribute("stuId",username);
 

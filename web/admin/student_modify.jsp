@@ -61,7 +61,7 @@
 <%
     StudentDao sd = new StudentDao();
     String stuId = request.getParameter("stuId");
-    StudentBean student = sd.getStudentByStuno(stuId);
+    StudentBean student = sd.getStudentBystuId(stuId);
     request.getSession().setAttribute("originStudent", student);
 
     //System.out.println(stuId);

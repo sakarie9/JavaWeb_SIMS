@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class StudentDao {
-    public StudentBean getStudentByStuno(String stuId) {
+    public StudentBean getStudentBystuId(String stuId) {
         StudentBean student = new StudentBean();
         Connection conn = DBUtil.getConn();
         Statement state = null;

@@ -30,7 +30,7 @@ public class ResetPswServlet extends HttpServlet {
         Object newPsw = req.getParameter("newPsw");
         Object stuId = req.getSession().getAttribute("notLoggedStuId");
         StudentDao sd = new StudentDao();
-        StudentBean student = sd.getStudentByStuno(stuId.toString());
+        StudentBean student = sd.getStudentBystuId(stuId.toString());
         student.setStuPsw(newPsw.toString());
         sd.updateStudent(student);
 
@@ -47,7 +47,7 @@ public class ResetPswServlet extends HttpServlet {
         String stuEmail = request.getParameter("stuEmail");
         String randomStr = getRandomString(6);//获取随机校验码
         StudentDao sd = new StudentDao();
-        StudentBean student = sd.getStudentByStuno(stuId);
+        StudentBean student = sd.getStudentBystuId(stuId);
         if(student.getStuEmail().equals(stuEmail)){
             try {
                 if (sendEmail(stuEmail, randomStr)) {
